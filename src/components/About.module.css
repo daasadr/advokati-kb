@@ -1,0 +1,154 @@
+.section {
+  padding: var(--section-py) 0;
+  background: var(--cream);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.imageCol { position: relative; min-height: 520px; }
+
+.imgMain {
+  position: absolute;
+  top: 0; left: 0;
+  width: 78%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(15, 25, 35, 0.18);
+}
+.imgMain img { width: 100%; height: 420px; object-fit: cover; }
+
+.imgAccent {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 50%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 4px solid var(--cream);
+  box-shadow: 0 12px 40px rgba(15, 25, 35, 0.14);
+}
+.imgAccent img { width: 100%; height: 200px; object-fit: cover; }
+
+.yearBadge {
+  position: absolute;
+  top: 50%; right: -1.5rem;
+  transform: translateY(-50%);
+  width: 80px; height: 80px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+}
+.yearNum {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.yearLabel {
+  font-family: var(--font-body);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(15, 25, 35, 0.65);
+}
+
+.textCol { padding: 1rem 0; }
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: var(--txt-dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.goldLine {
+  width: 3rem; height: 2px;
+  background: var(--gold);
+  margin-bottom: 1.75rem;
+}
+
+.para {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--txt-dark-mid);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.pillars {
+  display: flex;
+  gap: 2rem;
+  margin: 1.75rem 0;
+}
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.pillarIcon { font-size: 1.4rem; }
+.pillarLabel {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt-dark-low);
+}
+
+.sig {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.sigLine { width: 2.5rem; height: 1px; background: var(--gold); flex-shrink: 0; }
+.sigName {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--txt-dark);
+}
+.sigTitle {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--txt-dark-low);
+}
+
+.accred {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--txt-dark-low);
+  letter-spacing: 0.04em;
+}
+.accredIcon { color: var(--gold); font-size: 1rem; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 3rem; }
+  .imageCol { min-height: 360px; max-width: 480px; margin-inline: auto; }
+  .imgMain img { height: 300px; }
+  .imgAccent img { height: 160px; }
+  .yearBadge { right: 1rem; }
+  .pillars { gap: 1.25rem; }
+}

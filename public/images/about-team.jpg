@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="440" viewBox="0 0 600 440">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#162030"/>
+      <stop offset="100%" style="stop-color:#0f1923"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="440" fill="url(#bg)"/>
+  <!-- Background architectural detail -->
+  <rect x="0" y="320" width="600" height="120" fill="#0a1018" opacity="0.5"/>
+  <!-- Column lines -->
+  <line x1="100" y1="0" x2="100" y2="440" stroke="#c9a84c" stroke-width="0.4" opacity="0.1"/>
+  <line x1="300" y1="0" x2="300" y2="440" stroke="#c9a84c" stroke-width="0.4" opacity="0.1"/>
+  <line x1="500" y1="0" x2="500" y2="440" stroke="#c9a84c" stroke-width="0.4" opacity="0.1"/>
+  <!-- Person 1 silhouette -->
+  <ellipse cx="150" cy="170" rx="42" ry="50" fill="#1e2d3e"/>
+  <rect x="90" y="215" width="120" height="160" fill="#1e2d3e" rx="4"/>
+  <ellipse cx="150" cy="150" rx="30" ry="32" fill="#c9a84c" opacity="0.15"/>
+  <!-- Person 2 silhouette (slightly taller, in middle) -->
+  <ellipse cx="300" cy="155" rx="44" ry="52" fill="#243040"/>
+  <rect x="238" y="202" width="124" height="175" fill="#243040" rx="4"/>
+  <ellipse cx="300" cy="132" rx="32" ry="34" fill="#c9a84c" opacity="0.2"/>
+  <!-- Person 3 silhouette -->
+  <ellipse cx="450" cy="175" rx="40" ry="48" fill="#1e2d3e"/>
+  <rect x="392" y="218" width="116" height="158" fill="#1e2d3e" rx="4"/>
+  <ellipse cx="450" cy="155" rx="28" ry="30" fill="#c9a84c" opacity="0.12"/>
+  <!-- Gold accent at bottom -->
+  <line x1="80" y1="430" x2="520" y2="430" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+  <!-- Subtle gold shimmer on middle person -->
+  <rect x="280" y="100" width="40" height="4" fill="#c9a84c" opacity="0.25" rx="2"/>
+</svg>

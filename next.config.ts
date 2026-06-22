@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  basePath: '/advokati-kb',
+  assetPrefix: '/advokati-kb/',
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
