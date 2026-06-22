@@ -12,10 +12,10 @@ export default function About() {
     <section id="o-nas" className={styles.section}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.imageCol}>
-          <div className={`${styles.imgMain} reveal`}>
+          <div className={styles.imgMain}>
             <img src={asset('/images/about-office.webp')} alt="Interiér advokátní kanceláře" decoding="async" />
           </div>
-          <div className={`${styles.imgAccent} reveal reveal-delay-2`}>
+          <div className={styles.imgAccent}>
             <img src={asset('/images/about-team.webp')} alt="Tým advokátní kanceláře" decoding="async" />
           </div>
           <div className={styles.yearBadge}>
