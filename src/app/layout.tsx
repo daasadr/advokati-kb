@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: 'Diskrétní, přesní, orientovaní na výsledek. Právní pomoc v Praze od roku 1998.',
     url: 'https://daasadr.github.io/advokati-kb',
     siteName: 'Kovář, Blažek & Partneři',
-    images: [{ url: `${BASE}/images/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${BASE}/images/og-image.webp`, width: 1200, height: 630 }],
     locale: 'cs_CZ',
     type: 'website',
   },

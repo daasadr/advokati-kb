@@ -29,7 +29,7 @@ export default function Hero() {
       <div
         ref={bgRef}
         className={styles.bg}
-        style={{ backgroundImage: `url(${asset('/images/hero-bg.jpg')})` }}
+        style={{ backgroundImage: `url(${asset('/images/hero-bg.webp')})` }}
       />
       <div className={styles.overlay} />
       <ParticleCanvas />

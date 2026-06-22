@@ -13,10 +13,10 @@ export default function About() {
       <div className={`container ${styles.grid}`}>
         <div className={styles.imageCol}>
           <div className={`${styles.imgMain} reveal`}>
-            <img src={asset('/images/about-office.jpg')} alt="Interiér advokátní kanceláře" decoding="async" />
+            <img src={asset('/images/about-office.webp')} alt="Interiér advokátní kanceláře" decoding="async" />
           </div>
           <div className={`${styles.imgAccent} reveal reveal-delay-2`}>
-            <img src={asset('/images/about-team.jpg')} alt="Tým advokátní kanceláře" decoding="async" />
+            <img src={asset('/images/about-team.webp')} alt="Tým advokátní kanceláře" decoding="async" />
           </div>
           <div className={styles.yearBadge}>
             <span className={styles.yearNum}>1998</span>
