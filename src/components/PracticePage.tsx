@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { PRACTICE_AREAS } from '@/lib/practiceData';
@@ -113,9 +112,9 @@ export default function PracticePage() {
                         <span className={styles.consultLabel}>{t.consultationTitle}</span>
                         <span className={styles.consultPrice}>{area.consultation[lang]}</span>
                       </div>
-                      <Link href="/#kontakt" className={`btn-gold ${styles.cta}`}>
+                      <a href="#kontakt" className={`btn-gold ${styles.cta}`}>
                         {t.ctaLabel}
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </section>

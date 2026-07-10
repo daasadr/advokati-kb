@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { asset } from '@/lib/basePath';
@@ -40,8 +39,8 @@ export default function Hero() {
         <div className={`${styles.divider} reveal reveal-delay-2`} aria-hidden="true" />
         <p className={`${styles.claim} reveal reveal-delay-2`}>{t.claim}</p>
         <div className={`${styles.ctas} reveal reveal-delay-3`}>
-          <a href="/#kontakt" className="btn-gold">{t.cta1}</a>
-          <Link href="/#praxe" className="btn-outline">{t.cta2}</Link>
+          <a href="#kontakt" className="btn-gold">{t.cta1}</a>
+          <a href="#praxe" className="btn-outline">{t.cta2}</a>
         </div>
       </div>
 
