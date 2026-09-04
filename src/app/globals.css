@@ -27,6 +27,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; font-size: 16px; }
+/* Hlavička je pevná (70 px) — bez tohohle by kotva skončila pod ní. */
+section[id] { scroll-margin-top: 90px; }
 
 body {
   font-family: var(--font-body);

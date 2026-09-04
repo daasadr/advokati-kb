@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/lib/LanguageContext';
+import { BASE_PATH } from '@/lib/basePath';
 import { translations } from '@/lib/translations';
 import styles from './Nav.module.css';
 
@@ -21,12 +22,18 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Kotvy schválně nejdou přes <Link>. Next by basePath slepil s "/#id" na
+  // "/advokati-kb#o-nas" — tedy jinou cestu, než na které stojíme, takže router
+  // klik pohltil a nestalo se nic. Na úvodní stránce stačí holá kotva, odjinud
+  // plná cesta včetně lomítka před mřížkou.
+  const sectionHref = (id: string) => (isHome ? `#${id}` : `${BASE_PATH}/#${id}`);
+
   const links = [
-    { href: '/#o-nas', label: t.about },
-    { href: '/#praxe', label: t.practice },
-    { href: '/#tym', label: t.team },
-    { href: '/#reference', label: t.references },
-    { href: '/#kontakt', label: t.contact },
+    { id: 'o-nas',     label: t.about },
+    { id: 'praxe',     label: t.practice },
+    { id: 'tym',       label: t.team },
+    { id: 'reference', label: t.references },
+    { id: 'kontakt',   label: t.contact },
   ];
 
   const forceLight = !isHome || scrolled;
@@ -41,9 +48,9 @@ export default function Nav() {
 
         <nav className={styles.links} aria-label="Hlavní navigace">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={`${styles.link} ${forceLight ? styles.linkDark : ''}`}>
+            <a key={l.id} href={sectionHref(l.id)} className={`${styles.link} ${forceLight ? styles.linkDark : ''}`}>
               {l.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -73,9 +80,9 @@ export default function Nav() {
       <div className={`${styles.mobileMenu} ${open ? styles.mobileOpen : ''}`} aria-hidden={!open}>
         <nav className={styles.mobileLinks}>
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
+            <a key={l.id} href={sectionHref(l.id)} className={styles.mobileLink} onClick={() => setOpen(false)}>
               {l.label}
-            </Link>
+            </a>
           ))}
           <button className={styles.mobileLang} onClick={toggle}>
             {lang === 'cs' ? 'English' : 'Česky'}

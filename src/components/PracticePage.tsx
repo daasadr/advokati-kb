@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { BASE_PATH } from '@/lib/basePath';
 import { translations } from '@/lib/translations';
 import { PRACTICE_AREAS } from '@/lib/practiceData';
 import styles from './PracticePage.module.css';
@@ -112,7 +113,7 @@ export default function PracticePage() {
                         <span className={styles.consultLabel}>{t.consultationTitle}</span>
                         <span className={styles.consultPrice}>{area.consultation[lang]}</span>
                       </div>
-                      <a href="#kontakt" className={`btn-gold ${styles.cta}`}>
+                      <a href={`${BASE_PATH}/#kontakt`} className={`btn-gold ${styles.cta}`}>
                         {t.ctaLabel}
                       </a>
                     </div>

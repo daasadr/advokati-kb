@@ -1,19 +1,25 @@
 'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/lib/LanguageContext';
+import { BASE_PATH } from '@/lib/basePath';
 import { translations } from '@/lib/translations';
 import styles from './Footer.module.css';
 
+// Sekce úvodní stránky jdou přes kotvu (viz Nav.tsx — přes <Link> by je
+// basePath rozbil), Praxe je samostatná stránka a zůstává na <Link>.
 const NAV_ITEMS = [
-  { label_cs: 'O nás', label_en: 'About', href: '/#o-nas' },
-  { label_cs: 'Praxe', label_en: 'Practice', href: '/praxe' },
-  { label_cs: 'Tým', label_en: 'Team', href: '/#tym' },
-  { label_cs: 'Reference', label_en: 'References', href: '/#reference' },
-  { label_cs: 'Kontakt', label_en: 'Contact', href: '/#kontakt' },
+  { label_cs: 'O nás',     label_en: 'About',      section: 'o-nas'     },
+  { label_cs: 'Praxe',     label_en: 'Practice',   route:   '/praxe'    },
+  { label_cs: 'Tým',       label_en: 'Team',       section: 'tym'       },
+  { label_cs: 'Reference', label_en: 'References', section: 'reference' },
+  { label_cs: 'Kontakt',   label_en: 'Contact',    section: 'kontakt'   },
 ];
 
 export default function Footer() {
   const { lang } = useLanguage();
+  const isHome = usePathname() === '/';
+  const sectionHref = (id: string) => (isHome ? `#${id}` : `${BASE_PATH}/#${id}`);
   const t = translations[lang].footer;
   const info = translations[lang].contact.info;
 
@@ -34,13 +40,18 @@ export default function Footer() {
             <div>
               <h4 className={styles.colTitle}>{t.quickLinks}</h4>
               <ul className={styles.linkList}>
-                {NAV_ITEMS.map(item => (
-                  <li key={item.href}>
-                    <Link href={item.href} className={styles.footerLink}>
-                      {lang === 'cs' ? item.label_cs : item.label_en}
-                    </Link>
-                  </li>
-                ))}
+                {NAV_ITEMS.map(item => {
+                  const label = lang === 'cs' ? item.label_cs : item.label_en;
+                  return (
+                    <li key={item.route ?? item.section}>
+                      {item.route ? (
+                        <Link href={item.route} className={styles.footerLink}>{label}</Link>
+                      ) : (
+                        <a href={sectionHref(item.section!)} className={styles.footerLink}>{label}</a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div>
