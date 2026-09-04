@@ -28,12 +28,14 @@ export default function Nav() {
   // plná cesta včetně lomítka před mřížkou.
   const sectionHref = (id: string) => (isHome ? `#${id}` : `${BASE_PATH}/#${id}`);
 
+  // Praxe je samostatná stránka se službami — stejně jako v patičce.
+  // Ostatní položky míří na sekce úvodní stránky.
   const links = [
-    { id: 'o-nas',     label: t.about },
-    { id: 'praxe',     label: t.practice },
-    { id: 'tym',       label: t.team },
-    { id: 'reference', label: t.references },
-    { id: 'kontakt',   label: t.contact },
+    { section: 'o-nas',     label: t.about },
+    { route:   '/praxe',    label: t.practice },
+    { section: 'tym',       label: t.team },
+    { section: 'reference', label: t.references },
+    { section: 'kontakt',   label: t.contact },
   ];
 
   const forceLight = !isHome || scrolled;
@@ -47,11 +49,14 @@ export default function Nav() {
         </Link>
 
         <nav className={styles.links} aria-label="Hlavní navigace">
-          {links.map((l) => (
-            <a key={l.id} href={sectionHref(l.id)} className={`${styles.link} ${forceLight ? styles.linkDark : ''}`}>
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const cls = `${styles.link} ${forceLight ? styles.linkDark : ''}`;
+            return l.route ? (
+              <Link key={l.route} href={l.route} className={cls}>{l.label}</Link>
+            ) : (
+              <a key={l.section} href={sectionHref(l.section!)} className={cls}>{l.label}</a>
+            );
+          })}
         </nav>
 
         <div className={styles.actions}>
@@ -80,9 +85,15 @@ export default function Nav() {
       <div className={`${styles.mobileMenu} ${open ? styles.mobileOpen : ''}`} aria-hidden={!open}>
         <nav className={styles.mobileLinks}>
           {links.map((l) => (
-            <a key={l.id} href={sectionHref(l.id)} className={styles.mobileLink} onClick={() => setOpen(false)}>
-              {l.label}
-            </a>
+            l.route ? (
+              <Link key={l.route} href={l.route} className={styles.mobileLink} onClick={() => setOpen(false)}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.section} href={sectionHref(l.section!)} className={styles.mobileLink} onClick={() => setOpen(false)}>
+                {l.label}
+              </a>
+            )
           ))}
           <button className={styles.mobileLang} onClick={toggle}>
             {lang === 'cs' ? 'English' : 'Česky'}
