@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { BASE_PATH } from '@/lib/basePath';
+import { jumpToSection } from '@/lib/sectionJump';
 import { translations } from '@/lib/translations';
 import { PRACTICE_AREAS } from '@/lib/practiceData';
 import styles from './PracticePage.module.css';
@@ -33,7 +34,7 @@ export default function PracticePage() {
 
   const scrollTo = (id: string) => {
     const el = sectionRefs.current.get(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) jumpToSection(el, id);
     setActive(id);
   };
 

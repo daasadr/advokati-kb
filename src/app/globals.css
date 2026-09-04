@@ -30,6 +30,17 @@ html { scroll-behavior: smooth; font-size: 16px; }
 /* Hlavička je pevná (70 px) — bez tohohle by kotva skončila pod ní. */
 section[id] { scroll-margin-top: 90px; }
 
+/* Přechod na sekci (viz lib/sectionJump.ts). Obsah krátce ztmavne a vrátí se;
+   hlavička zůstává stát, aby se návštěvník měl čeho držet. */
+body > *:not(header) { transition: opacity 260ms ease; }
+html.section-jump body > *:not(header) { opacity: 0; transition-duration: 170ms; }
+html.no-reveal-anim .reveal { transition: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body > *:not(header) { transition: none; }
+}
+
 body {
   font-family: var(--font-body);
   background: var(--navy);

@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import ScrollReveal from '@/components/ScrollReveal';
+import AnchorTransition from '@/components/AnchorTransition';
 
 const playfair = Playfair_Display({
   weight: ['400', '500', '700'],
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LanguageProvider>
           <ScrollReveal />
+          <AnchorTransition />
           {children}
         </LanguageProvider>
       </body>
