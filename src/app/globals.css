@@ -30,15 +30,39 @@ html { scroll-behavior: smooth; font-size: 16px; }
 /* Hlavička je pevná (70 px) — bez tohohle by kotva skončila pod ní. */
 section[id] { scroll-margin-top: 90px; }
 
-/* Přechod na sekci (viz lib/sectionJump.ts). Obsah krátce ztmavne a vrátí se;
-   hlavička zůstává stát, aby se návštěvník měl čeho držet. */
-body > *:not(header) { transition: opacity 260ms ease; }
-html.section-jump body > *:not(header) { opacity: 0; transition-duration: 170ms; }
+/* Přechod na sekci (viz lib/sectionJump.ts): obsah se rozplyne v mlze, za ní
+   proběhne skok a obsah se z mlhy zase vynoří.
+
+   Prolnutí obsahu do průhledna tu bylo dřív a bylo horší: pod obsahem prosvítá
+   tmavé pozadí body, takže cesta ze světlé sekce do světlé vedla přes tmu.
+   Mlha zakryje i výměnu pozadí, takže mezi tmavou a krémovou sekcí nevznikne
+   ostrý předěl — oko jde přes střední tón, ne z černé do bílé.
+
+   Vrstva leží pod hlavičkou (z-index 100), ta zůstává ostrá jako pevný bod. */
+.mist {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(115% 85% at 50% 45%,
+    rgba(150, 166, 186, 0.55) 0%,
+    rgba(138, 155, 176, 0.82) 55%,
+    rgba(122, 138, 158, 0.92) 100%);
+  /* prefix první — minifikátor jinak neprefixovanou verzi zahodí a ve Firefoxu
+     by mlha zůstala bez rozostření */
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity;
+}
+html.section-jump .mist { opacity: 1; transition-duration: 240ms; }
+
 html.no-reveal-anim .reveal { transition: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  body > *:not(header) { transition: none; }
+  .mist { display: none; }
 }
 
 body {

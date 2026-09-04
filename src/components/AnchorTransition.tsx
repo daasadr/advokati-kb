@@ -4,8 +4,11 @@ import { jumpToSection } from '@/lib/sectionJump';
 
 /**
  * Odchytává kliknutí na kotvy v rámci stránky (menu, patička, tlačítka v hero)
- * a nahrazuje dlouhé scrollování klidným přechodem — viz lib/sectionJump.
+ * a nahrazuje dlouhé scrollování přechodem přes mlhu — viz lib/sectionJump.
  * Odkazy na jiné stránky nechává být.
+ *
+ * Vykresluje i samotnou vrstvu mlhy; ta je pořád v DOM a jen mění průhlednost,
+ * aby se při kliknutí nemusela zakládat a prohlížeč ji měl připravenou.
  */
 export default function AnchorTransition() {
   useEffect(() => {
@@ -41,5 +44,5 @@ export default function AnchorTransition() {
     };
   }, []);
 
-  return null;
+  return <div className="mist" aria-hidden="true" />;
 }

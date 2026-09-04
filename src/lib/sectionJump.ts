@@ -5,13 +5,15 @@
  * postupně protne každý prvek s třídou .reveal. Ten se rozanimuje (0,7 s fade
  * + posun), takže sekce za sekcí problikávají a celý pohyb působí trhaně.
  *
- * Místo toho obsah krátce ztmavne, skok proběhne okamžitě a obsah se vrátí.
+ * Místo toho se obsah rozplyne v mlze, skok proběhne za ní a obsah se vynoří.
+ * Mlha kryje i výměnu pozadí, takže přechod mezi tmavou a krémovou sekcí
+ * neskončí ostrým předělem.
  * Prvky, které po skoku leží ve výřezu, se rovnou označí za odhalené — jinak
  * by se po dopadu rozanimovaly znovu. Co je pod výřezem, si svou animaci
  * ponechá na chvíli, kdy k tomu návštěvník doscrolluje.
  */
 
-const FADE_OUT_MS = 170;
+const FADE_OUT_MS = 240; // musí sedět s dobou náběhu .mist v globals.css
 const HEADER_GAP = 20;
 
 function prefersReducedMotion(): boolean {
